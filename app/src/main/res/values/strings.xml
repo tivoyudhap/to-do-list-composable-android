@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Main To Do List</string>
+    <string name="title_activity_create_to_do">CreateToDoActivity</string>
+</resources>
