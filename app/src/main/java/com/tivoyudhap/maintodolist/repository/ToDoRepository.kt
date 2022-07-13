@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 
-class ToDoRepository @Inject constructor(
+class ToDoRepository constructor(
     private var database: ToDoDatabase
 ) {
 

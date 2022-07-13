@@ -4,11 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
@@ -30,12 +35,15 @@ class CreateToDoActivity : ComponentActivity() {
             }) { paddingValues ->
                 paddingValues.calculateBottomPadding()
                 paddingValues.calculateTopPadding()
-                Column {
+                Column(
+                    modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    val text = remember { mutableStateOf(TextFieldValue(viewModel.title)) }
                     TextField(
-                        modifier = Modifier.padding(start = 8f.dp),
-                        value = TextFieldValue(viewModel.title),
+                        value = text.value,
                         label = titleLabel(text = "Title"),
-                        placeholder = hintLabel(hint = "asdasd"),
+                        placeholder = hintLabel(hint = "Input To Do Title"),
                         onValueChange = {
                             viewModel.title = it.text
                         }
