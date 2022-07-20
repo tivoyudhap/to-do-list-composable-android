@@ -1,6 +1,6 @@
 name: PR Auto-build
 
-on:
+on: self-hosted
   pull_request:
     types: [labeled]
   pull_request_review:
