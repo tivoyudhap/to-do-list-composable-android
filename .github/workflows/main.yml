@@ -1,21 +1,17 @@
-name: PR Auto-build
+name: PR Auto-merge
 
-on: self-hosted
-  pull_request:
-    types: [labeled]
-  pull_request_review:
-    types: [submitted]
+on: repository_dispatch
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: self-hosted
     steps:
-      - name: Trigger pr-autobuild action for building PR
+      - name: Trigger pr-autobuild action
         uses: tivoyudhap/to-do-list-composable-android@master
         env:
           GITHUB_TOKEN: ${{ secrets.bot_token }}
           GITHUB_NAME: tivoyudhap
           DEFAULT_APPROVAL_COUNT_ENV: 1
           BUILD_COMMENT_ENV: "OK to test"
-          PR_LABEL_ENV: RELEASE_TEST
-          CODEOWNERS: tivo.yudhap11@gmail.com
+          PR_LABEL_ENV: RELEASE
+          DELETE_BRANCH_ENV: true
